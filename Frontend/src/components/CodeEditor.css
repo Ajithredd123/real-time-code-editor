@@ -1,0 +1,219 @@
+/* src/components/CodeEditor.css */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container */
+.code-editor-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #1e1e1e;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Styles */
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #252526;
+  border-bottom: 1px solid #3e3e42;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-left h2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.status-indicator {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background-color: #2d2d30;
+}
+
+.status-indicator.connected {
+  color: #4ec9b0;
+}
+
+.status-indicator.disconnected {
+  color: #f48771;
+}
+
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.room-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #2d2d30;
+  padding: 8px 15px;
+  border-radius: 6px;
+}
+
+.room-info strong {
+  color: #4ec9b0;
+}
+
+.copy-btn {
+  background-color: #0e639c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+}
+
+.copy-btn:hover {
+  background-color: #1177bb;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.language-select {
+  background-color: #2d2d30;
+  color: #fff;
+  border: 1px solid #3e3e42;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  outline: none;
+}
+
+.language-select:hover {
+  border-color: #007acc;
+}
+
+/* Users Panel */
+.users-panel {
+  background-color: #252526;
+  padding: 10px 20px;
+  border-bottom: 1px solid #3e3e42;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.users-panel h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #cccccc;
+}
+
+.users-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #2d2d30;
+  padding: 5px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+}
+
+.user-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.user-name {
+  color: #cccccc;
+}
+
+/* Editor + Output Container */
+.editor-output-container {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 150px);
+}
+
+.editor-wrapper {
+  flex: 1;
+}
+
+.output-wrapper {
+  flex: 0.8;
+  background-color: #252526;
+  border-left: 1px solid #333;
+}
+
+.resize-handle {
+  width: 6px;
+  background-color: #444;
+  cursor: ew-resize;
+  transition: background-color 0.2s;
+}
+
+.resize-handle:hover {
+  background-color: #777;
+}
+
+.chat-panel {
+  background-color: #202124;
+  border-left: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: width 0.2s ease;
+}
+
+/* Resizer Handle */
+.resizer {
+  width: 5px;
+  cursor: ew-resize;
+  background-color: #3e3e42;
+  position: relative;
+  z-index: 10;
+}
+.resizer:hover {
+  background-color: #555;
+}
+
+/* Responsive: Stack output below editor on small screens */
+@media (max-width: 768px) {
+  .editor-output-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .editor-wrapper,
+  .output-wrapper {
+    width: 100% !important;
+    height: 50vh;
+  }
+
+  .resizer {
+    cursor: ns-resize;
+    width: 100%;
+    height: 5px;
+  }
+}
